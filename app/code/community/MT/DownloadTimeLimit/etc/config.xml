@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category     MT
+ * @package      MT_DownloadTimeLimit
+ *
+ * @copyright    Copyright (C) 2008-2014 MagentoThemes.net. All Rights Reserved.
+ * @license      GNU General Public License version 2 or later;
+ * @author       MagentoThemes.net
+ * @email        support@magentothemes.net
+ *
+ */
+ -->
+<config>
+    <modules>
+        <MT_DownloadTimeLimit>
+            <version>1.0.0</version>
+        </MT_DownloadTimeLimit>
+    </modules>
+    <global>
+        <models>
+            <downloadtimelimit>
+                <class>MT_DownloadTimeLimit_Model</class>
+                <resourceModel>downloadtimelimit_mysql4</resourceModel>
+            </downloadtimelimit>
+            <downloadtimelimit_mysql4>
+                <class>MT_DownloadTimeLimit_Model_Mysql4</class>
+                <entities>
+                    <downloadtimelimit>
+                        <table>mt_downloadtimelimit</table>
+                    </downloadtimelimit>
+                </entities>
+            </downloadtimelimit_mysql4>
+        </models>
+        <helpers>
+            <downloadtimelimit>
+                <class>MT_DownloadTimeLimit_Helper</class>
+            </downloadtimelimit>
+        </helpers>
+        <resources>
+            <downloadtimelimit_setup>
+                <setup>
+                    <module>MT_DownloadTimeLimit</module>
+                </setup>
+                <connection>
+                    <use>core_setup</use>
+                </connection>
+            </downloadtimelimit_setup>
+            <downloadtimelimit_write>
+                <connection>
+                    <use>core_write</use>
+                </connection>
+            </downloadtimelimit_write>
+            <downloadtimelimit_read>
+                <connection>
+                    <use>core_read</use>
+                </connection>
+            </downloadtimelimit_read>
+        </resources>
+    </global>
+    <frontend>
+        <routers>
+            <downloadable>
+                <args>
+                    <modules>
+                        <MT_DownloadTimeLimit before="Mage_Downloadable_DownloadController">MT_DownloadTimeLimit</MT_DownloadTimeLimit>
+                    </modules>
+                </args>
+            </downloadable>
+        </routers>
+    </frontend>
+    <default>
+        <catalog>
+            <downloadable>
+                <enable_time_limit>1</enable_time_limit>
+                <downloads_time>30</downloads_time>
+                <limit_ip>10</limit_ip>
+            </downloadable>
+        </catalog>
+    </default>
+</config>
