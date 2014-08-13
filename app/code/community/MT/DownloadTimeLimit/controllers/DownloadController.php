@@ -57,7 +57,7 @@ class MT_DownloadTimeLimit_DownloadController extends Mage_Downloadable_Download
             $orderDate = Mage::getModel('core/date')->date('Y-m-d',strtotime($linkPurchasedItem->getCreatedAt()));
             $timeExpired = Mage::getModel('core/date')->date('Y-m-d', strtotime($orderDate) + $maxTime);
             $expired = strtotime($timeExpired);
-            $userIp = $_SERVER['REMOTE_ADDR'];
+            $userIp = $helper->getClientIp();
             $checklink = $helper->getLimitIp($linkPurchasedItem->getLinkHash(),$userIp);
             if($now <= $expired)
             {
