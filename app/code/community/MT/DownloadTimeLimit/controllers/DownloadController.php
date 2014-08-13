@@ -69,6 +69,12 @@ class MT_DownloadTimeLimit_DownloadController extends Mage_Downloadable_Download
                     if($helper->checkIp($userIp))
                     {
                         $model->setLinkHash($linkPurchasedItem->getLinkHash());
+                        if ( Mage::getSingleton('customer/session')->isLoggedIn() )
+                        {
+                            $customerId = Mage::getSingleton('customer/session')->getId();
+                            $model->setUserId($customerId);
+                        }
+                        $model->setTime(Mage::getModel('core/date')->date());
                         $model->setIp($userIp)->save();
                     }
                 }

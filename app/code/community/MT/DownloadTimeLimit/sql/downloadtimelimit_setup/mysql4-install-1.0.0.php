@@ -19,6 +19,8 @@ CREATE TABLE {$this->getTable('downloadtimelimit/downloadtimelimit')} (
 		  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
 		  `link_hash` varchar(255) DEFAULT NULL,
 		  `ip` varchar(50) DEFAULT NULL,
+		  `time` datetime NOT NULL,
+		  `user_id` int(10) unsigned NULL default null,
 		  PRIMARY KEY (`id`)
 		) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 ");
