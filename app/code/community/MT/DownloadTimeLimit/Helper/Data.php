@@ -71,10 +71,7 @@ class MT_DownloadTimeLimit_Helper_Data extends Mage_Core_Helper_Abstract
 
     public function getCustomerGroupName($groupId)
     {
-        if ($groupId) {
-            return Mage::getModel('customer/group')->load((int)$groupId)->getCode();
-        }
-        return null;
+        return Mage::getModel('customer/group')->load((int)$groupId)->getCode();
     }
 
     public function getClientIp() {
