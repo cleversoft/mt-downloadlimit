@@ -33,8 +33,34 @@ $customerData = Mage::getModel('customer/customer')->load($orderInfo->getCustome
         </table>
         <address class="box-right">
             <strong><?php echo $this->__('Customer Order');?></strong>
-            <br/><?php echo $customerData->getName();?><br/>
-            <?php echo $customerData->getEmail();?><br/>
+            <?php
+            if($customerData){
+                $name = $customerData->getName();
+                $email = $customerData->getEmail();
+            }else{
+                $name = $orderInfo->getCustomerName();
+                $email = $orderInfo->getCustomerEmail();
+            }
+            $group = Mage::helper('downloadtimelimit')->getCustomerGroupName($orderInfo->getCustomerGroupId());
+            ?>
+            <table cellspacing="0" class="form-list">
+                <tbody>
+                <tr>
+                    <td class="label"><label>Customer Name</label></td>
+                    <td>
+                        <strong><?php echo $name;?></strong>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="label"><label>Email</label></td>
+                    <td><a href="mailto:<?php echo $email;?>"><strong><?php echo $email;?></strong></a></td>
+                </tr>
+                <tr>
+                    <td class="label"><label>Customer Group</label></td>
+                    <td><strong><?php echo $group;?></strong></td>
+                </tr>
+                </tbody>
+            </table>
         </address>
     </fieldset>
 </div>
