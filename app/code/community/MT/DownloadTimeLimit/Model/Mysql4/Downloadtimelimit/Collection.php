@@ -34,4 +34,11 @@ class MT_DownloadTimeLimit_Model_Mysql4_DownloadTimeLimit_Collection extends Mag
         return $this;
     }
 
+    public function addPurchasedIdFilter($PurchasedId)
+    {
+        $this->getSelect()
+            ->where('main_table.purchased_id = ?', $PurchasedId);
+        return $this;
+    }
+
 }

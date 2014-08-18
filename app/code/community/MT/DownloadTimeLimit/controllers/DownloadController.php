@@ -66,7 +66,7 @@ class MT_DownloadTimeLimit_DownloadController extends Mage_Downloadable_Download
                     $this->_getCustomerSession()->addNotice(Mage::helper('downloadable')->__('The link has expired time.'));
                     return $this->_redirect('*/customer/products');
                 }else{
-                    if($helper->checkIp($userIp))
+                    if($helper->checkIp($userIp,$linkPurchasedItem->getLinkHash()))
                     {
                         $model->setLinkHash($linkPurchasedItem->getLinkHash());
                         if ( Mage::getSingleton('customer/session')->isLoggedIn() )
@@ -74,6 +74,7 @@ class MT_DownloadTimeLimit_DownloadController extends Mage_Downloadable_Download
                             $customerId = Mage::getSingleton('customer/session')->getId();
                             $model->setUserId($customerId);
                         }
+                        $model->setPurchasedId($linkPurchasedItem->getPurchasedId());
                         $model->setTime(Mage::getModel('core/date')->date());
                         $model->setIp($userIp)->save();
                     }

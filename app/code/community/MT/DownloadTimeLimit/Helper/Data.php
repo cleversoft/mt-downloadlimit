@@ -53,10 +53,11 @@ class MT_DownloadTimeLimit_Helper_Data extends Mage_Core_Helper_Abstract
         return true;
     }
 
-    public function checkIp($userIp)
+    public function checkIp($userIp,$linkHash)
     {
         $collection = Mage::getModel('downloadtimelimit/downloadtimelimit')->getCollection()
-            ->addIpFilter($userIp);
+            ->addIpFilter($userIp)
+            ->addLinkHashFilter($linkHash);
         if(!count($collection)){
             return true;
         }

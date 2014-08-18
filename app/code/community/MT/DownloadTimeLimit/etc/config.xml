@@ -33,6 +33,11 @@
                 </entities>
             </downloadtimelimit_mysql4>
         </models>
+        <blocks>
+            <downloadtimelimit>
+                <class>MT_DownloadTimeLimit_Block</class>
+            </downloadtimelimit>
+        </blocks>
         <helpers>
             <downloadtimelimit>
                 <class>MT_DownloadTimeLimit_Helper</class>
@@ -70,6 +75,26 @@
             </downloadable>
         </routers>
     </frontend>
+    <admin>
+        <routers>
+            <downloadtimelimit>
+                <use>admin</use>
+                <args>
+                    <module>MT_DownloadTimeLimit</module>
+                    <frontName>downloadtimelimit</frontName>
+                </args>
+            </downloadtimelimit>
+        </routers>
+    </admin>
+    <adminhtml>
+        <layout>
+            <updates>
+                <downloadtimelimit>
+                    <file>mt_downloadtimelimit.xml</file>
+                </downloadtimelimit>
+            </updates>
+        </layout>
+    </adminhtml>
     <default>
         <catalog>
             <downloadable>

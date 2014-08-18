@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * @category     MT
+ * @package      MT_DownloadTimeLimit
+ *
+ * @copyright    Copyright (C) 2008-2014 MagentoThemes.net. All Rights Reserved.
+ * @license      GNU General Public License version 2 or later;
+ * @author       MagentoThemes.net
+ * @email        support@magentothemes.net
+ *
+ */
+-->
+<layout>
+    <downloadtimelimit_adminhtml_downloadable_edit>
+        <reference name="left">
+            <block type="downloadtimelimit/adminhtml_downloadable_edit_tabs" name="downloadtimelimit_downloadable_edit_tabs">
+                <block type="downloadtimelimit/adminhtml_downloadable_edit_tab_main" name="downloadtimelimit_downloadable_edit_tab_main" template="mt/downloadtimelimit/edit/main.phtml"/>
+                <action method="addTab"><name>info_section</name><block>downloadtimelimit_downloadable_edit_tab_main</block></action>
+            </block>
+        </reference>
+        <reference name="content">
+            <block type="downloadtimelimit/adminhtml_downloadable_edit" name="downloadtimelimit_downloadable_edit"/>
+        </reference>
+    </downloadtimelimit_adminhtml_downloadable_edit>
+    <downloadtimelimit_adminhtml_downloadable_downloaded>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="downloadtimelimit/adminhtml_downloadable_edit_tab_downloaded" name="downloadtimelimit_downloadable_edit_tab_downloaded"/>
+        </block>
+    </downloadtimelimit_adminhtml_downloadable_downloaded>
+    <downloadtimelimit_adminhtml_downloadable_downloadedgrid>
+        <block type="core/text_list" name="root" output="toHtml">
+            <block type="downloadtimelimit/adminhtml_downloadable_edit_tab_downloaded" name="downloadtimelimit_downloadable_edit_tab_downloaded"/>
+        </block>
+    </downloadtimelimit_adminhtml_downloadable_downloadedgrid>
+</layout>

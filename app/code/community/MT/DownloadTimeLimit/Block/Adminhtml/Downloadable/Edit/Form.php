@@ -12,17 +12,16 @@
  * ------------------------------------------------------------------------------
  *
  */
-$installer = $this;
-$installer->startSetup();
-$installer->run("
-CREATE TABLE {$this->getTable('downloadtimelimit/downloadtimelimit')} (
-		  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-		  `purchased_id` int(10) unsigned NOT NULL,
-		  `link_hash` varchar(255) DEFAULT NULL,
-		  `ip` varchar(50) DEFAULT NULL,
-		  `time` datetime NOT NULL,
-		  `user_id` int(10) unsigned NULL default null,
-		  PRIMARY KEY (`id`)
-		) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
-");
-$installer->endSetup();
+class MT_DownloadTimeLimit_Block_Adminhtml_Downloadable_Edit_Form extends Mage_Adminhtml_Block_Widget_Form
+{
+    protected function _prepareForm(){
+        $form = new Varien_Data_Form(array(
+            'id' => 'edit_form',
+            'action' => $this->getUrl('*/*/save'),
+            'method' => 'post'
+        ));
+        $form->setUseContainer(true);
+        $this->setForm($form);
+        return parent::_prepareForm();
+    }
+}

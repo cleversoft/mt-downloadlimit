@@ -1,0 +1,39 @@
+<?php
+/**
+ *
+ * ------------------------------------------------------------------------------
+ * @category     MT
+ * @package      MT_DownloadTimeLimit
+ * ------------------------------------------------------------------------------
+ * @copyright    Copyright (C) 2008-2013 MagentoThemes.net. All Rights Reserved.
+ * @license      GNU General Public License version 2 or later;
+ * @author       MagentoThemes.net
+ * @email        support@magentothemes.net
+ * ------------------------------------------------------------------------------
+ *
+ */
+$data = $this->getDownloadableInfo();
+$customerData = Mage::getModel('customer/customer')->load($data->getCustomerId());
+?>
+<div class="entry-edit">
+    <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo $this->__('Downloadable Information');?></h4></div>
+    <fieldset>
+        <table cellspacing="2" class="box-left">
+            <tbody>
+            <tr>
+                <td><strong><?php echo $this->__('Product Name: ');?></strong></td>
+                <td><?php echo $data->getProductName();?></td>
+            </tr>
+            <tr>
+                <td><strong><?php echo $this->__('Date created');?></strong></td>
+                <td><?php echo Mage::helper('core')->formatDate($data->getCreatedAt(), 'full', false);?></td>
+            </tr>
+            </tbody>
+        </table>
+        <address class="box-right">
+            <strong><?php echo $this->__('Customer Order');?></strong>
+            <br/><?php echo $customerData->getName();?><br/>
+            <?php echo $customerData->getEmail();?><br/>
+        </address>
+    </fieldset>
+</div>
