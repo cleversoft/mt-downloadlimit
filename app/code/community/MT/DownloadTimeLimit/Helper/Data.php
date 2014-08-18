@@ -64,6 +64,11 @@ class MT_DownloadTimeLimit_Helper_Data extends Mage_Core_Helper_Abstract
         return false;
     }
 
+    public function getOrderInfo($incrementId)
+    {
+        return Mage::getModel('sales/order')->loadByIncrementId($incrementId);
+    }
+
     public function getClientIp() {
         $ipaddress = '';
         if (getenv('HTTP_CLIENT_IP'))

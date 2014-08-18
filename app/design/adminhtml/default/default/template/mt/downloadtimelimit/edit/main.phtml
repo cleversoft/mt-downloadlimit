@@ -13,7 +13,8 @@
  *
  */
 $data = $this->getDownloadableInfo();
-$customerData = Mage::getModel('customer/customer')->load($data->getCustomerId());
+$orderInfo = Mage::helper('downloadtimelimit')->getOrderInfo($data->getOrderIncrementId());
+$customerData = Mage::getModel('customer/customer')->load($orderInfo->getCustomerId());
 ?>
 <div class="entry-edit">
     <div class="entry-edit-head"><h4 class="icon-head head-customer-view"><?php echo $this->__('Downloadable Information');?></h4></div>
